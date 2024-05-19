@@ -45,6 +45,26 @@ public class G {
         }
     }
 
+     public List<Integer> getShortestPath(int source, int destination) {
+        List<Integer> shortestPath = new ArrayList<>();
+        if (V[destination].distance == Integer.MAX_VALUE) {
+            return shortestPath; // No hay camino desde el origen al destino
+        }
+
+        Stack<Integer> pathStack = new Stack<>();
+        int currentVertex = destination;
+        while (currentVertex != -1) {
+            pathStack.push(currentVertex);
+            currentVertex = V[currentVertex].pi;
+        }
+
+        while (!pathStack.isEmpty()) {
+            shortestPath.add(pathStack.pop());
+        }
+
+        return shortestPath;
+    }
+
     public void relax(int u, int v, int w) {
         if (V[v].distance > V[u].distance + w) {
             V[v].distance = V[u].distance + w;
