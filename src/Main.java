@@ -3,7 +3,7 @@ import graph.G;
 public class Main {
     public static void main(String[] args) {
         G g = new G();
-        g.readGraph("graphNew.txt");
+        g.readGraph("graph1.txt");
 
         System.out.println("Grafo de entrada:");
         g.printGraph();
