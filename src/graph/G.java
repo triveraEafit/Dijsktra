@@ -3,6 +3,9 @@ package graph;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
+import java.util.Stack;
+import java.util.ArrayList;
 
 
 public class G {
@@ -107,5 +110,27 @@ public class G {
             }
             System.out.println("");
         }
+    }
+    public boolean ShortestPath(int source, int destination) {
+        int fnal= destination;
+        System.out.println("\nEl camino más corto entre los nodos "+ source + " y "+ destination+ " es:");
+        if (V[destination].distance == Integer.MAX_VALUE) {
+            System.out.println("No hay camino entre ambos nodos.");
+            return true;
+        }
+
+        Stack<Integer> pathStack = new Stack<>();
+        while (destination != -1) {
+            pathStack.push(destination);
+            destination = V[destination].pi;
+        }
+
+        while (!pathStack.isEmpty()) {
+            System.out.print("->"+pathStack.pop());
+        }
+        System.out.println(" | Su peso es de: " + this.V[fnal].distance);
+        return true;
+
+
     }
 }
